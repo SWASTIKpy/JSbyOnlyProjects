@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    </style>
+    <style>
+        .containerb{
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+    <div class="containerb">
+        <button id="increment">+1</button>
+        <button id="decrement">-1</button>
+    </div>
+    <script>
+        const increment = document.getElementById("increment");
+        const decrement = document.getElementById("decrement");
+
+        let score = 0;
+        const scoreC = document.querySelector(".container");
+        const scoreP = document.createElement('p');
+        scoreP.textContent = score;
+        scoreC.appendChild(scoreP);
+        increment.addEventListener("click", () => {
+            score ++;
+            scoreP.textContent = score;
+        })
+
+    
+        decrement.addEventListener("click", () => {
+            score --;
+            scoreP.textContent = score;
+        })
+    </script>
+</body>
+</html>
