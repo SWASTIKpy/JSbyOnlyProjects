@@ -1,0 +1,303 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #00FA9A 0%, #7FFFD4 40%, #98FB98 100%);
+    background-attachment: fixed;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Whole page scrollbar styling */
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00FA9A, #00C878);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #00C878, #00FA9A);
+}
+
+/* Animated liquid blobs in background */
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    animation: float 20s infinite ease-in-out;
+    z-index: -1;
+}
+
+body::before {
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, #00FA9A, #3FE0C3);
+    top: -200px;
+    left: -200px;
+    animation: float 25s infinite ease-in-out;
+}
+
+body::after {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #7FFFD4, #00FA9A);
+    bottom: -150px;
+    right: -150px;
+    animation: float 30s infinite ease-in-out reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(100px, -50px) scale(1.1);
+    }
+    66% {
+        transform: translate(-50px, 100px) scale(0.9);
+    }
+}
+
+#container {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 40px 50px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 
+        0 8px 32px 0 rgba(0, 250, 154, 0.2),
+        inset 0 0 20px rgba(255, 255, 255, 0.2);
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    animation: fadeIn 0.8s ease-in;
+    position: relative;
+}
+
+/* Glass shine effect */
+#container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.4) 0%, 
+        rgba(255, 255, 255, 0) 100%);
+    border-radius: 30px 30px 0 0;
+    pointer-events: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+h1 {
+    color: #000000;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5);
+}
+
+#container > p {
+    color: #00695C;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    font-weight: 400;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+#genQ {
+    background: linear-gradient(135deg, #00C878 0%, #00FA9A 50%, #3FE0C3 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 8px 20px rgba(0, 250, 154, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Liquid ripple effect on button */
+#genQ::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+#genQ:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+#genQ:hover {
+    background: linear-gradient(135deg, #00A86B 0%, #00C878 50%, #00FA9A 100%);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 12px 30px rgba(0, 250, 154, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+#genQ:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 6px 15px rgba(0, 250, 154, 0.4);
+}
+
+#quoteDisplay {
+    margin-top: 30px;
+    padding: 10px;
+}
+
+.quote-para {
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    padding: 25px 30px;
+    margin: 15px 0;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-size: 1.2rem;
+    color: #004D40;
+    line-height: 1.8;
+    border-left: 4px solid rgba(0, 250, 154, 0.7);
+    box-shadow: 
+        0 8px 32px 0 rgba(0, 250, 154, 0.15),
+        inset 0 0 20px rgba(255, 255, 255, 0.15);
+    animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Liquid shine effect on quotes */
+.quote-para::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(0, 250, 154, 0.3),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+.quote-para:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 12px 40px 0 rgba(0, 250, 154, 0.25),
+        inset 0 0 30px rgba(255, 255, 255, 0.2);
+    border-left-color: rgba(0, 250, 154, 0.9);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #container {
+        padding: 30px 25px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    #container > p {
+        font-size: 1rem;
+    }
+    
+    #genQ {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    
+    .quote-para {
+        font-size: 1rem;
+        padding: 20px;
+    }
+    
+    body::before,
+    body::after {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    .quote-para {
+        font-size: 0.95rem;
+        padding: 15px;
+    }
+}
